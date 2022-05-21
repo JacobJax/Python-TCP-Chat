@@ -2,7 +2,7 @@ import socket
 import threading
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('127.0.0.1', 1111))
+client.connect((socket.gethostname(), 1111))
 
 call_sign = input("CALL SIGN: ")
 

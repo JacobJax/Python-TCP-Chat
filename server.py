@@ -2,7 +2,7 @@ import socket
 import threading
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind(('127.0.0.1', 1111))
+s.bind((socket.gethostname(), 1111))
 s.listen()
 
 clients = []
@@ -20,6 +20,7 @@ def handle(client):
          broadcast(message)
       except:
          clients.remove(client)
+         client.close()
          break
 
 # receive clients
