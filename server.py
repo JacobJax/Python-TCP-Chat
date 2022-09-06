@@ -2,8 +2,8 @@ import socket
 import threading
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((socket.gethostname(), 1111))
-s.listen()
+s.bind((socket.gethostbyname(socket.gethostname()), 1111))
+s.listen(8)
 
 clients = []
 
@@ -36,7 +36,7 @@ def receive():
       client.send("Connected to server \n".encode())
 
       # broadcast to all clients
-      broadcast("Another fag joined the chat! \n".encode())
+      broadcast("\nAnother fag joined the chat!\n".encode())
 
       # create handle thread
       h_thread = threading.Thread(target=handle, args=(client,))

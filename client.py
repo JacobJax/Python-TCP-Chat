@@ -1,8 +1,14 @@
+from dotenv import load_dotenv
+import os
 import socket
 import threading
 
+load_dotenv()
+
+HOST = os.getenv("HOST_IP")
+
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect((socket.gethostname(), 1111))
+client.connect((HOST, 1111))
 
 call_sign = input("CALL SIGN: ")
 
